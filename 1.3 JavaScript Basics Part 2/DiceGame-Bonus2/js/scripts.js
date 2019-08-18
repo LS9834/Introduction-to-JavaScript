@@ -1,4 +1,4 @@
-//Generate the pc random number
+// Generate the pc random number
 var pcRandomNumber = Math.random() * 9 + 1;
 var pcDiceRoll = Math.round(pcRandomNumber);
 var pcResult = "The computer's result is: " + pcDiceRoll + "!";
@@ -10,7 +10,7 @@ var playerRandomNumber = Math.random() * 9 + 1;
 var playerDiceRoll = Math.round(playerRandomNumber);
 var playerResult = "Your result is: " + playerDiceRoll + "!";
 // Output player results:
-console.log(playerResult);
+// console.log(playerResult);
 document.write(playerResult + "<br>");
 
 //Determine which one is the winner.
