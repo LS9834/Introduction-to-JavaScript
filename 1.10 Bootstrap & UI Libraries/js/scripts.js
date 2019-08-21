@@ -80,35 +80,35 @@ var pokemonRepository = (function() {
           item.types.push(details.types[i].type.name);
         }
         if (item.types.includes("grass")) {
-          $(".modal-body").css("background-color", "lightgreen");
-          // $listItem.css("background-color", "lightgreen");
+          $(".modal-body").css("color", "green");
+          // $listItem.css("color", "lightgreen");
           // $(this).css('color', 'red');
         } else if (item.types.includes("fire")) {
-          $(".modal-body").css("background-color", "red");
+          $(".modal-body").css("color", "red");
         } else if (item.types.includes("psychic")) {
-          $(".modal-body").css("background-color", "#FF69B4");
+          $(".modal-body").css("color", "#FF69B4");
         } else if (item.types.includes("poison")) {
-          $(".modal-body").css("background-color", "purple");
+          $(".modal-body").css("color", "purple");
         } else if (item.types.includes("water")) {
-          $(".modal-body").css("background-color", "blue");
+          $(".modal-body").css("color", "blue");
         } else if (item.types.includes("bug")) {
-          $(".modal-body").css("background-color", "#3f000f");
+          $(".modal-body").css("color", "#3f000f");
         } else if (item.types.includes("rock")) {
-          $(".modal-body").css("background-color", "#BC8F8F");
+          $(".modal-body").css("color", "#BC8F8F");
         } else if (item.types.includes("flying")) {
-          $(".modal-body").css("background-color", "#2F4F4F");
+          $(".modal-body").css("color", "#2F4F4F");
         } else if (item.types.includes("electric")) {
-          $(".modal-body").css("background-color", "gold");
+          $(".modal-body").css("color", "gold");
         } else if (item.types.includes("ice")) {
-          $(".modal-body").css("background-color", "#4169E1");
+          $(".modal-body").css("color", "#4169E1");
         } else if (item.types.includes("ghost")) {
-          $(".modal-body").css("background-color", "#8B008B");
+          $(".modal-body").css("color", "#8B008B");
         } else if (item.types.includes("ground")) {
-          $(".modal-body").css("background-color", "#D2B48C");
+          $(".modal-body").css("color", "#D2B48C");
         } else if (item.types.includes("fairy")) {
-          $(".modal-body").css("background-color", "#EE82EE");
+          $(".modal-body").css("color", "#EE82EE");
         } else if (item.types.includes("steel")) {
-          $(".modal-body").css("background-color", "#708090");
+          $(".modal-body").css("color", "#708090");
         }
         //loop to get the abilities of a selected pokemon
         item.abilities = [];
