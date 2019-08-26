@@ -1,4 +1,3 @@
-var pokemonRepository = (function() {
   var repository = [
     { name: "Bulbasaur", height: 0.7, types: ["grass"] },
     { name: "Charmander", height: 0.6, types: ["fire"] },
@@ -6,10 +5,9 @@ var pokemonRepository = (function() {
     { name: "Alakazam", height: 1.5, types: ["psychic"] }
   ];
 
-  return repository;
-})();
+  
 
-pokemonRepository.forEach(function(item) {
+repository.forEach(function(item) {
   var size;
   if (item.height > 1.5) {
     size = "Wow, that’s big!";
