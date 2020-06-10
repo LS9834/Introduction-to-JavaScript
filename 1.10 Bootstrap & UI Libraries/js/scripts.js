@@ -79,6 +79,10 @@ var pokemonRepository = (function () {
         for (var i = 0; i < details.types.length; i++) {
           item.types.push(details.types[i].type.name);
         }
+        // item.types = [];
+        // details.types.forEach(function (i) {
+        //   item.types.push(i.type.name);
+        // });
         if (item.types.includes("grass")) {
           $(".modal-header").css("color", "green");
           // $listItem.css("color", "lightgreen");
