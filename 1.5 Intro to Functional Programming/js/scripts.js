@@ -1,9 +1,9 @@
-var pokemonRepository = (function() {
+var pokemonRepository = (function () {
   var repository = [
     { name: "Bulbasaur", height: 0.7, types: ["grass"] },
     { name: "Charmander", height: 0.6, types: ["fire"] },
     { name: "Golbat", height: 1.6, types: ["flying", "poison"] },
-    { name: "Alakazam", height: 1.5, types: ["psychic"] }
+    { name: "Alakazam", height: 1.5, types: ["psychic"] },
   ];
 
   function add(pokemon) {
@@ -21,7 +21,7 @@ var pokemonRepository = (function() {
   }
   return {
     add: add,
-    getAll: getAll
+    getAll: getAll,
   };
 })();
 
@@ -29,7 +29,7 @@ console.log(pokemonRepository.getAll());
 pokemonRepository.add({ name: "Pikachu", height: 0.3, types: ["electric"] });
 console.log(pokemonRepository.getAll());
 
-pokemonRepository.getAll().forEach(function(item) {
+pokemonRepository.getAll().forEach(function (item) {
   var size;
   if (item.height > 1) {
     size = "Wow, that’s big!";
@@ -38,7 +38,7 @@ pokemonRepository.getAll().forEach(function(item) {
   }
 
   var result;
-  item.types.forEach(function(typeItem) {
+  item.types.forEach(function (typeItem) {
     if (typeItem == "grass") {
       result = '<span style="color:green;"> ';
     } else if (typeItem == "fire") {

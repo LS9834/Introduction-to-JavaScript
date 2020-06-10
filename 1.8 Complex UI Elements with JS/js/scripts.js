@@ -1,4 +1,4 @@
-var pokemonRepository = (function() {
+var pokemonRepository = (function () {
   var repository = [];
   var apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=900";
   function add(pokemon) {
@@ -23,42 +23,42 @@ var pokemonRepository = (function() {
     button.classList.add("my-class");
     $listItem.appendChild(button);
     pokemonList.appendChild($listItem);
-    button.addEventListener("click", function(event) {
+    button.addEventListener("click", function (event) {
       showDetails(pokemon);
     });
   }
   function showDetails(item) {
-    pokemonRepository.loadDetails(item).then(function() {
+    pokemonRepository.loadDetails(item).then(function () {
       console.log(item);
       showModal(item);
     });
   }
   function loadList() {
     return fetch(apiUrl)
-      .then(function(response) {
+      .then(function (response) {
         return response.json();
       })
-      .then(function(json) {
-        json.results.forEach(function(item) {
+      .then(function (json) {
+        json.results.forEach(function (item) {
           var pokemon = {
             name: item.name,
-            detailsUrl: item.url
+            detailsUrl: item.url,
           };
           add(pokemon);
           console.log(pokemon);
         });
       })
-      .catch(function(e) {
+      .catch(function (e) {
         console.error(e);
       });
   }
   function loadDetails(item) {
     var url = item.detailsUrl;
     return fetch(url)
-      .then(function(response) {
+      .then(function (response) {
         return response.json();
       })
-      .then(function(details) {
+      .then(function (details) {
         // Now we add the details to the item
         item.imageUrl = details.sprites.front_default;
         item.height = details.height;
@@ -118,7 +118,7 @@ var pokemonRepository = (function() {
 
         item.weight = details.weight;
       })
-      .catch(function(e) {
+      .catch(function (e) {
         console.error(e);
       });
   }
@@ -174,7 +174,7 @@ var pokemonRepository = (function() {
     $modalContainer.classList.remove("is-visible");
   }
   //hides modal when clicked on ESC on keyboard
-  window.addEventListener("keydown", e => {
+  window.addEventListener("keydown", (e) => {
     var $modalContainer = document.querySelector("#modal-container");
     if (
       e.key === "Escape" &&
@@ -185,7 +185,7 @@ var pokemonRepository = (function() {
   });
   //hides modal if clicked outside of it
   var $modalContainer = document.querySelector("#modal-container");
-  $modalContainer.addEventListener("click", e => {
+  $modalContainer.addEventListener("click", (e) => {
     var target = e.target;
     if (target === $modalContainer) {
       hideModal();
@@ -198,12 +198,12 @@ var pokemonRepository = (function() {
     loadList: loadList,
     loadDetails: loadDetails,
     showModal: showModal,
-    hideModal: hideModal
+    hideModal: hideModal,
   };
 })();
-pokemonRepository.loadList().then(function() {
+pokemonRepository.loadList().then(function () {
   // Now the data is loaded!
-  pokemonRepository.getAll().forEach(function(pokemon) {
+  pokemonRepository.getAll().forEach(function (pokemon) {
     pokemonRepository.addListItem(pokemon);
   });
 });

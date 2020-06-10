@@ -1,13 +1,11 @@
-  var repository = [
-    { name: "Bulbasaur", height: 0.7, types: ["grass"] },
-    { name: "Charmander", height: 0.6, types: ["fire"] },
-    { name: "Golbat", height: 1.6, types: ["flying", "poison"] },
-    { name: "Alakazam", height: 1.5, types: ["psychic"] }
-  ];
+var repository = [
+  { name: "Bulbasaur", height: 0.7, types: ["grass"] },
+  { name: "Charmander", height: 0.6, types: ["fire"] },
+  { name: "Golbat", height: 1.6, types: ["flying", "poison"] },
+  { name: "Alakazam", height: 1.5, types: ["psychic"] },
+];
 
-  
-
-repository.forEach(function(item) {
+repository.forEach(function (item) {
   var size;
   if (item.height > 1.5) {
     size = "Wow, that’s big!";
@@ -18,7 +16,7 @@ repository.forEach(function(item) {
   }
 
   var result;
-  item.types.forEach(function(typeItem) {
+  item.types.forEach(function (typeItem) {
     if (typeItem == "grass") {
       result = '<span style="color:green;"> ';
     } else if (typeItem == "fire") {

@@ -1,6 +1,7 @@
 var pokemonRepository = (function() {
   var repository = [];
-  var apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=900";
+  var apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
+
   function add(pokemon) {
     if (
       typeof pokemon === "object" &&
@@ -8,19 +9,17 @@ var pokemonRepository = (function() {
       "detailsUrl" in pokemon
     ) {
       repository.push(pokemon);
-    } else {
-      console.log("add an object");
     }
   }
   function getAll() {
     return repository;
   }
-  function addListItem(pokemon) {
+  function addListItem(pokemon = {}) {
     var $pokemonList = $(".pokemon-list");
     var $listItem = $("<li>");
-    // var button = document.createElement("button");
-    // button.innerText = pokemon.name;
-    // button.classList.add("my-class");
+    //var button = document.createElement("button");
+    //  button.innerText = pokemon.name;
+    //  button.classList.add("my-class");
     var $button = $('<button class="my-class">' + pokemon.name + "</button>");
     $listItem.append($button);
     $pokemonList.append($listItem);
@@ -58,50 +57,8 @@ var pokemonRepository = (function() {
         // Now we add the details to the item
         item.imageUrl = details.sprites.front_default;
         item.height = details.height;
-        //loop for each ofthe pokemon types.
-        //Also changing the background color depend on each pokemon type.
-        item.types = [];
-        for (var i = 0; i < details.types.length; i++) {
-          item.types.push(details.types[i].type.name);
-        }
-        if (item.types.includes("grass")) {
-          $("#modal-container").css("background-color", "lightgreen");
-        } else if (item.types.includes("fire")) {
-          $("#modal-container").css("background-color", "red");
-        } else if (item.types.includes("psychic")) {
-          $("#modal-container").css("background-color", "#FF69B4");
-        } else if (item.types.includes("poison")) {
-          $("#modal-container").css("background-color", "purple");
-        } else if (item.types.includes("water")) {
-          $("#modal-container").css("background-color", "blue");
-        } else if (item.types.includes("bug")) {
-          $("#modal-container").css("background-color", "#3f000f");
-        } else if (item.types.includes("rock")) {
-          $("#modal-container").css("background-color", "#BC8F8F");
-        } else if (item.types.includes("flying")) {
-          $("#modal-container").css("background-color", "#2F4F4F");
-        } else if (item.types.includes("electric")) {
-          $("#modal-container").css("background-color", "gold");
-        } else if (item.types.includes("ice")) {
-          $("#modal-container").css("background-color", "#4169E1");
-        } else if (item.types.includes("ghost")) {
-          $("#modal-container").css("background-color", "#8B008B");
-        } else if (item.types.includes("ground")) {
-          $("#modal-container").css("background-color", "#D2B48C");
-        } else if (item.types.includes("fairy")) {
-          $("#modal-container").css("background-color", "#EE82EE");
-        } else if (item.types.includes("steel")) {
-          $("#modal-container").css("background-color", "#708090");
-        }
-        //loop to get the abilities of a selected pokemon
-        item.abilities = [];
-        for (var i = 0; i < details.abilities.length; i++) {
-          item.abilities.push(details.abilities[i].ability.name);
-          // item.abilities.push('slot: ' + details.abilities[i].slot);
-          // item.abilities.push('is_hidden: ' + details.abilities[i].is_hidden);
-        }
-
         item.weight = details.weight;
+        item.types = Object.keys(details.types);
       })
       .catch(function(e) {
         console.error(e);
@@ -128,18 +85,12 @@ var pokemonRepository = (function() {
     var heightElement = $("<p>" + "height : " + item.height + "</p>");
     //creating element for weight in modal content
     var weightElement = $("<p>" + "weight : " + item.weight + "</p>");
-    //creating element for type in modal content
-    var typesElement = $("<p>" + "types : " + item.types + "</p>");
-    //creating element for abilities in modal content
-    var abilitiesElement = $("<p>" + "abilities : " + item.abilities + "</p>");
     //appending modal content to webpage
     modal.append(closeButtonElement);
     modal.append(nameElement);
     modal.append(imageElement);
     modal.append(heightElement);
     modal.append(weightElement);
-    modal.append(typesElement);
-    modal.append(abilitiesElement);
     $modalContainer.append(modal);
     //adds class to show the modal
     $modalContainer.addClass("is-visible");
@@ -164,6 +115,7 @@ var pokemonRepository = (function() {
       hideModal();
     }
   });
+
   return {
     add: add,
     getAll: getAll,
@@ -180,5 +132,3 @@ pokemonRepository.loadList().then(function() {
     pokemonRepository.addListItem(pokemon);
   });
 });
-// pokemonRepository.loadDetails();
-// pokemonRepository.loadList();
